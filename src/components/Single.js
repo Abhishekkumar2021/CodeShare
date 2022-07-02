@@ -105,6 +105,7 @@ align-items: center;
   .tags{
     display: flex;
       align-items: center;
+      flex-wrap:wrap;
       padding:10px;
       gap:10px;
       #icon{
