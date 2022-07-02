@@ -113,7 +113,7 @@ function New() {
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('http://localhost:3000/api/posts/',{title,description:des,code,author,tags:array})
+    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array})
     // console.log(res.data);
     navigate(`/post/${res.data._id}`);
   }

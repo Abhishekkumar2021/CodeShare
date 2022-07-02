@@ -145,7 +145,7 @@ function Single() {
   
   useEffect(()=>{
     const fetchData = async ()=>{
-      const res = await axios.get(`http://localhost:3000/api/posts/${id}`)
+      const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
       setPost(res.data);
     }
     fetchData();
