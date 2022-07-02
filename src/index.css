@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+*{
+  margin:0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+pre{
+  background:rgb(249, 251, 229);
+  padding:10px;
+  border-radius: 20px;
+  border: 1px solid rgb(229, 229, 221);
+  margin:5px;
+
+  
+}
+code{
+  word-wrap: break-word;
+  font-family: 'Fira Code', monospace !important;
+}
+body{
+  background:url('https://images.unsplash.com/photo-1476733545060-6fb5b1aece7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: 'Roboto',sans-serif;
+  color:rgba(28, 34, 55, 0.808);
+}
+::-webkit-scrollbar {
+  width: 0;  /* Remove scrollbar space */
+  background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+a,h1,h2,p,input,textarea{
+  color:rgba(28, 34, 55, 0.808);
+  font-family: 'Roboto',sans-serif;
+  line-height: 1.4;
+}
