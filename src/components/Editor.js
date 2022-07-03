@@ -11,7 +11,7 @@ import useInput from "../hooks/useInput";
 import DescriptionContext from "../DescriptionContext";
 const StyledEditor = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 95vh;
   display: flex;
   align-items: center;
   padding:10px;
@@ -150,15 +150,19 @@ const [des,setDes] = useContext(DescriptionContext);
   const [heading, toggleHeading] = useToggle(false);
   const [code, toggleCode] = useToggle(false);
   const [preview, togglePreview] = useToggle(false);
+
+  
   useEffect(()=>{
     const newStr = string.replaceAll('\n','<br/>');
     setHTML(newStr);
-  },[string])
+  },[string,des])
+
+  useEffect(()=>{
+    setString(des);
+  },[des])
   const handleChange = (e) => {
-    setString(e.target.value);
-    console.log(des);
     setDes(HTML)
-   
+    setString(e.target.value);
   };
   const handleBold = () => {
     if(bold && stack[stack.length-1]!=='bold') return;

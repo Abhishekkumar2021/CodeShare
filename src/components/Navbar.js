@@ -6,14 +6,13 @@ import {FaLaptopCode, FaLayerGroup} from 'react-icons/fa'
 
 
 const StyledNav = styled.nav`
-width:100%;
+width:100vw;
 padding:10px 20px;
 background:white;
 display: flex;
 justify-content: space-between;
-border-radius: 100px;
-position: sticky;
-top:10px;
+position: fixed;
+top:0px;
 box-shadow:0 3px 5px 2px rgb(0,0,0,0.15);
 z-index:200;
 a{

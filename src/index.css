@@ -7,15 +7,13 @@
 }
 pre{
   background:rgb(249, 251, 229);
-  padding:10px;
-  border-radius: 20px;
+  padding:8px;
+  border-radius: 10px;
   border: 1px solid rgb(229, 229, 221);
-  margin:5px;
+  margin:8px 0;
 
-  
 }
 code{
-  word-wrap: break-word;
   font-family: 'Fira Code', monospace !important;
 }
 body{
@@ -27,16 +25,18 @@ body{
   font-family: 'Roboto',sans-serif;
   color:rgba(28, 34, 55, 0.808);
 }
-::-webkit-scrollbar {
-  width: 0;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-::-webkit-scrollbar-thumb {
-  background: #ffffff;
-}
+
 a,h1,h2,p,input,textarea{
   color:rgba(28, 34, 55, 0.808);
   font-family: 'Roboto',sans-serif;
-  line-height: 1.4;
+  line-height: 1.15;
+}
+@media only screen and (max-width:768px){
+  .code code{
+    font-size:10px;
+    
+  }
+  code{
+    font-size:12px;
+  }
 }

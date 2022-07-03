@@ -12,16 +12,19 @@ import DescriptionContext from "../DescriptionContext";
 import { useNavigate } from "react-router-dom";
 
 const StyledDiv = styled.div`
-  width: 800px;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background:transparent;
+  justify-content: center;
+  padding: 10px;
+  padding-top:80px;
+  background:rgb(217, 241, 250);
+
   form {
-    width: 100%;
+    width: 800px;
+    max-width:100%;
     .label {
       display: flex;
       align-items: center;
@@ -32,7 +35,7 @@ const StyledDiv = styled.div`
       }
     }
     input {
-      min-width: 400px;
+      min-width: 360px;
       max-width: 100%;
     }
     .icons {

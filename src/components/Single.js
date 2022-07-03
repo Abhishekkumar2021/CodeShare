@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, {  useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import Navbar from './Navbar';
@@ -13,14 +13,13 @@ const StyledPage = styled.div`
 width:100%;
 min-height:100vh;
 padding:20px;
+padding-top: 70px;
+background:rgb(217, 241, 250);
+
 display: flex;
 flex-direction: column;
 gap:10px;
 align-items: center;
-.nav{
-  width:900px;
-  max-width: 100%;
-}
 .Paper{
   background:white;
   flex-grow: 1;
@@ -33,9 +32,15 @@ align-items: center;
     font-weight:400;
   }
   #des{
+    pre{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    }
     padding:10px ;
     a{
-      color:blue;
+      color:teal;
       &:hover{
         text-decoration: none;
       }
@@ -44,16 +49,7 @@ align-items: center;
       padding:10px 0;
       font-weight:400;
     }
-    pre{
-      overflow-x: auto;
-      white-space: pre-wrap;
-      white-space: -moz-pre-wrap;
-      white-space: -o-pre-wrap;
-      word-wrap: break-word;
-    }
-    code{
-      /* background:teal; */
-    }
+
   }
   .code{
     position: relative;
@@ -117,33 +113,36 @@ align-items: center;
       padding:10px 20px;
       border-radius: 20px;
       border:1px solid green;
+      color:green;
+      a{
+        text-decoration: none;
+      }
       }
   }
 
 }
 #copy{
-  background: rgb(20,20,60);
+  background: rgb(22, 22, 32);;
   color:white;
-  padding:20px;
-  font-size:20px;
+  padding:20px 30px;
+  font-size:16px;
   position:fixed;
   bottom: -80px;
   box-shadow:0 3px 5px rgb(0, 0, 0, 0.2);
 border-radius: 30px;
 transition: 0.2s ease all;
   transform:${({copy})=>copy &&'translateY(-100px)'};
-
-
 }
 `
 
 function Single() {
+
   const [light, toggleLight] = useToggle(true);
   const {id} = useParams();
   const [copy,setCopy] = useState(false);
-  document.title = 'Post'
+ 
   const [post,setPost] = useState({description:''})
-  
+  document.title = post?.title || 'Post'
   useEffect(()=>{
     const fetchData = async ()=>{
       const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
@@ -160,7 +159,7 @@ function Single() {
   }
   return (
     <StyledPage copy={copy}>
-      <Navbar className="nav"/>
+      <Navbar/>
       <div className='Paper'>
       <h1 id="title">{post.title} </h1>
       <div id="des">{parse(post?.description)}</div>
@@ -179,7 +178,7 @@ function Single() {
       <div className='tags'>
         <BsFillTagsFill id="icon"/> Tags
         {post.tags?.map((tag,idx)=>(
-          <span className='tag' key={idx}>{tag}</span>
+          <span className='tag' key={idx}><a href={`https://en.wikipedia.org/wiki/${tag}`}>{tag}</a></span>
         ))}
       </div>
       </div>

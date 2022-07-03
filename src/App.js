@@ -5,9 +5,10 @@ import All from './components/All';
 import Single from './components/Single';
 import Error from './components/Error';
 import New from './components/New';
-import Editor from './components/Editor';
 import DescriptionContext from './DescriptionContext'
 import { useState } from 'react';
+import EditorPage from './components/EditorPage';
+import Update from './components/Update';
 
 function App() {
   const [des, setDes] = useState("");
@@ -21,7 +22,8 @@ function App() {
         <Route exact path='/post/all' element={<All/>}/>
         <Route exact path='/post/new' element={<New/>}/>
         <Route exact path='/post/:id' element={<Single/>}/>
-        <Route exact path='/editor' element={<Editor/>}/>
+        <Route exact path='/post/update/:id' element={<Update/>}/>
+        <Route exact path='/editor' element={<EditorPage/>}/>
         <Route path='*' element={<Error/>}/>
       </Routes>
       
