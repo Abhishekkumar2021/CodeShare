@@ -30,6 +30,7 @@ gap:10px;
   align-items: center;
   gap:10px;
   transition:0.2s ease all;
+  height:${({err})=>err?"auto":"0"};
 
   transform:${({err})=>err?"scale(1)":"scale(0)"}
 

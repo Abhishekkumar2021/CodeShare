@@ -32,6 +32,7 @@ gap:10px;
   transition:0.2s ease all;
 
   transform:${({err})=>err?"scale(1)":"scale(0)"};
+  height:${({err})=>err?"auto":"0"};
 
 }
 .icons{
