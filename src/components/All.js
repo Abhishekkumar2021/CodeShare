@@ -6,7 +6,7 @@ import parse from 'html-react-parser'
 import { Link } from 'react-router-dom';
 
 const StyledDiv = styled.div`
-padding-top:70px;
+padding-top:80px;
 width:100%;
 min-height:100vh;
 background:rgb(217, 241, 250);
@@ -16,8 +16,8 @@ flex-wrap: wrap;
 align-content: center;
 gap:15px;
 .post{
-  width:300px;
-  height:362px;
+  width:360px;
+  height:418px;
   max-width:100%;
   background: white;
   padding:20px;

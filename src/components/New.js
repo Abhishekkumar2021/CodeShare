@@ -89,9 +89,12 @@ const StyledDiv = styled.div`
       border-radius: 30px;
       transition:0.3s ease all;
       margin: 0 auto;
-      &:active{
-        transform:scale(0.9);
-      }
+      &:hover{
+    transform: scale(1.1);
+  }
+  &:active{
+    transform: scale(0.9);
+  }
       button {
         border: none;
         outline: none;
@@ -135,6 +138,7 @@ function New() {
           name="title"
           value={title}
           onChange={handleTitle}
+          required
         />
         <div className="description label">
           <MdDescription className="icons" />
@@ -146,7 +150,7 @@ function New() {
           <FaFreeCodeCamp className="icons" />
           <label htmlFor="code">Write the code here.</label>
         </div>
-        <textarea name="code" id="code" value={code} onChange={handleCode} />
+        <textarea name="code" id="code" value={code} onChange={handleCode} required />
         <div className="author label">
           <BsFillPeopleFill className="icons" />
           <label htmlFor="title">Author </label>
@@ -158,6 +162,7 @@ function New() {
           name="author"
           value={author}
           onChange={handleAuthor}
+          required
         />
         <div className="author label">
           <AiFillTags className="icons" />
@@ -170,6 +175,7 @@ function New() {
           name="tags"
           value={tags}
           onChange={handleTags}
+          required
         />
         <div className="post">
           <AiOutlineCloudUpload />

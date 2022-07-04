@@ -13,7 +13,7 @@ const StyledPage = styled.div`
 width:100%;
 min-height:100vh;
 padding:20px;
-padding-top: 70px;
+padding-top: 80px;
 background:rgb(217, 241, 250);
 
 display: flex;
