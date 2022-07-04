@@ -117,7 +117,7 @@ function Navbar() {
     <StyledNav dis={dis}>
        {!dis?<AiOutlineMenu className="icon ham" onClick={toggleDis}/>:<AiOutlineClose className="icon ham" onClick={toggleDis}/>} 
         <div className='links'>
-        <Link to='/home'><AiFillHome className='icon'/> Home</Link>
+        <Link to='/'><AiFillHome className='icon'/> Home</Link>
         <Link to='/post/new'><AiFillPlusCircle className='icon'/> Create Post</Link>
         <Link to='/post/all'><FaLayerGroup className='icon'/> All Posts</Link>
         <Link to='/editor'><FaLaptopCode className='icon'/> Editor</Link>

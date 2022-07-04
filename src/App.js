@@ -14,7 +14,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 
-function App() {
+function App() { 
   const [des, setDes] = useState("");
   // localStorage
 
@@ -23,10 +23,9 @@ function App() {
     <DescriptionContext.Provider value={[des, setDes]}>
       <div className="app">
         <Routes>
-          <Route exact path="/home" element={<Home />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
-          <Route path="/" element={<PrivateRoute user={localStorage.getItem("authToken")} />}>
+          <Route  element={<PrivateRoute user={localStorage.getItem("authToken")} />}>
             <Route exact path="post/all" element={<All />} />
             <Route exact path="user/profile" element={<Profile />} />
             <Route exact path="post/new" element={<New />} />
@@ -34,6 +33,7 @@ function App() {
             <Route exact path="post/update/:id" element={<Update />} />
             <Route exact path="editor" element={<EditorPage />} />
           </Route>
+          <Route exact path="/" element={<Home />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </div>

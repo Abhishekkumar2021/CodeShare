@@ -11,7 +11,7 @@ import useInput from "../hooks/useInput";
 import DescriptionContext from "../DescriptionContext";
 const StyledEditor = styled.div`
   width: 100%;
-  min-height: 95vh;
+  min-height: 92vh;
   display: flex;
   align-items: center;
   padding:10px;

@@ -155,7 +155,7 @@ function Register() {
       if(!res.data.success) setError(res.data.error)
       else{
         localStorage.setItem("authToken",res.data.token);
-        navigate("/home");
+        navigate("/");
       } 
 
     }catch(err){

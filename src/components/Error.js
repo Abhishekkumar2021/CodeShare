@@ -54,7 +54,7 @@ function Error() {
     <StyledDiv>
       <div>
       <h1>Nothing here</h1>
-      <Link to='/home'>Go Home</Link>
+      <Link to='/'>Go Home</Link>
       </div>
     </StyledDiv>
   )
