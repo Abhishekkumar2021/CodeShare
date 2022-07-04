@@ -23,7 +23,7 @@ function App() {
     <DescriptionContext.Provider value={[des, setDes]}>
       <div className="app">
         <Routes>
-        <Route  path="/" element={<PrivateRoute user={localStorage.getItem("authToken")} />}>
+        <Route exact path="/" element={<PrivateRoute user={localStorage.getItem("authToken")} />}>
             <Route exact path="/post/all" element={<All />} />
             <Route exact path="/user/profile" element={<Profile />} />
             <Route exact path="/post/new" element={<New />} />
