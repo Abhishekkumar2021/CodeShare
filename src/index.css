@@ -17,11 +17,7 @@ code{
   font-family: 'Fira Code', monospace !important;
 }
 body{
-  background:url('https://images.unsplash.com/photo-1476733545060-6fb5b1aece7f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-size: cover;
+  background-color: white;
   font-family: 'Roboto',sans-serif;
   color:rgba(28, 34, 55, 0.808);
 }

@@ -29,8 +29,7 @@ gap:15px;
   h3{
     padding:10px;
     border-radius: 10px;
-    border:2px solid orange;
-    color:orange;
+    border:2px solid rgb(20,20,56,0.5);
     font-weight: 300;
    
   }

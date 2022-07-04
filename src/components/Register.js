@@ -31,7 +31,7 @@ gap:10px;
   gap:10px;
   transition:0.2s ease all;
   height:${({err})=>err?"auto":"0"};
-
+ 
   transform:${({err})=>err?"scale(1)":"scale(0)"}
 
 }
@@ -118,7 +118,7 @@ a{
 @media only screen and (max-width:768px){
   .card{
     flex-direction: column;
-    min-height:96vh;
+    flex-grow: 1;
     #sidebar{
       border-radius: 20px 20px 0 0;
     }

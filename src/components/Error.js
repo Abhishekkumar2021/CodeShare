@@ -48,13 +48,13 @@ justify-content: center;
 `;
 
 function Error() {
-  document.title = '404 Page'
+  document.title = '404 Not Found!'
 
   return (
     <StyledDiv>
       <div>
       <h1>Nothing here</h1>
-      <Link to='/'>Go Home</Link>
+      <Link to='/home'>Go Home</Link>
       </div>
     </StyledDiv>
   )

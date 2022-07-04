@@ -113,7 +113,7 @@ a{
 @media only screen and (max-width:768px){
   .card{
     flex-direction: column;
-    min-height:96vh;
+    flex-grow: 1;
     #sidebar{
       border-radius: 20px 20px 0 0;
     }
