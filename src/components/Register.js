@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import useInput from '../hooks/useInput';
 import {MdEmail} from 'react-icons/md'
 import {RiLockPasswordFill} from 'react-icons/ri'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaUserCircle } from 'react-icons/fa';
+import axios from 'axios';
+import { BiErrorCircle } from 'react-icons/bi';
 
 const StyledDiv = styled.div`
 width:100%;
@@ -14,6 +16,28 @@ background:rgb(217, 241, 250);
 display: flex;
 justify-content: center;
 align-items: center;
+flex-direction: column;
+gap:10px;
+.error{
+  background:white;
+  padding:10px 20px;
+  max-width:100%;
+  border-radius: 10px;
+  box-shadow:0 3px 5px rgb(0,0,0,0.2);
+  text-align: center;
+  color:red;
+  display: flex;
+  align-items: center;
+  gap:10px;
+  transition:0.2s ease all;
+
+  transform:${({err})=>err?"scale(1)":"scale(0)"}
+
+}
+.icons{
+    width:30px;
+    height:30px;
+  }
 .card{
   width:800px;
   max-width:100%;
@@ -112,13 +136,35 @@ function Register() {
   const [email,handleEmail] = useInput("")
   const [password,handlePassword] = useInput("")
   const [username,handleUsername] = useInput("")
+  const [error,setError] = useState("");
+  const navigate = useNavigate();
 
-
-  const handleSubmit = (e)=>{
+  useEffect(()=>{
+    if(localStorage.getItem("authToken")) navigate("/home")
+  },[navigate])
+  const handleSubmit = async (e)=>{
     e.preventDefault();
+    const config = {
+      header:{
+        "Content-Type":"application/json"
+      }
+    }
+    try{
+      const res = await axios.post("https://codeshareback.herokuapp.com/api/user/register",{username,email,password},config);
+      if(!res.data.success) setError(res.data.error)
+      else{
+        localStorage.setItem("authToken",res.data.token);
+        navigate("/home");
+      } 
+
+    }catch(err){
+      setError(err.response.data.error);
+      // console.log(err.response.data.error);
+    }
   }
   return (
-    <StyledDiv>
+    <StyledDiv err={error!==""}>
+       <div className='error'><BiErrorCircle className="icons"/>{error}</div>
       <div className='card'>
         <div id="sidebar"></div>
         <form onSubmit={handleSubmit}>
@@ -129,7 +175,7 @@ function Register() {
           <label htmlFor="username">Username</label>
         </div>
         <input
-          id="input"
+
           type="text"
           placeholder="Enter the username here...."
           name="username"
@@ -142,7 +188,7 @@ function Register() {
           <label htmlFor="email">Email</label>
         </div>
         <input
-          id="input"
+
           type="email"
           placeholder="Enter the email here...."
           name="email"
@@ -155,9 +201,9 @@ function Register() {
           <label htmlFor="password">Password </label>
         </div>
         <input
-          id="input"
+
           type="password"
-          placeholder="Enter the email here...."
+          placeholder="Enter the password here...."
           name="password"
           value={password}
           onChange={handlePassword}

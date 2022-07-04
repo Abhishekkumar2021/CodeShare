@@ -26,11 +26,13 @@ gap:15px;
   display: flex;
   gap:10px;
   flex-direction: column;
-  h1{
-    text-align: center;
-    &:hover{
-      text-decoration: underline;
-    }
+  h3{
+    padding:10px;
+    border-radius: 10px;
+    border:2px solid orange;
+    color:orange;
+    font-weight: 300;
+   
   }
   #des{
     padding:5px;
@@ -90,7 +92,7 @@ function All() {
       <Navbar/>
       {posts.map((post,idx)=>(
         <div className='post' key={idx}>
-          <h1>{post.title}</h1>
+          <h3>{post.title}</h3>
           <div id="des">{parse(post.description)}</div>
           <Link id="more" to={`/post/${post._id}`}>Know More</Link>
         </div>

@@ -27,7 +27,7 @@ body{
 }
 
 a,h1,h2,p,input,textarea{
-  color:rgba(28, 34, 55, 0.808);
+  color:rgba(28, 34, 85, 0.808);
   font-family: 'Roboto',sans-serif;
   line-height: 1.15;
 }

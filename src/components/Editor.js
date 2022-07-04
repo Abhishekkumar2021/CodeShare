@@ -157,9 +157,6 @@ const [des,setDes] = useContext(DescriptionContext);
     setHTML(newStr);
   },[string,des])
 
-  useEffect(()=>{
-    setString(des);
-  },[des])
   const handleChange = (e) => {
     setDes(HTML)
     setString(e.target.value);

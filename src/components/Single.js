@@ -114,6 +114,9 @@ align-items: center;
       border-radius: 20px;
       border:1px solid green;
       color:green;
+      &:hover{
+        background:white;
+      }
       a{
         text-decoration: none;
       }
@@ -122,14 +125,14 @@ align-items: center;
 
 }
 #copy{
-  background: rgb(22, 22, 32);;
+  background: rgb(22, 22, 72);;
   color:white;
-  padding:20px 30px;
+  padding:15px 20px;
   font-size:16px;
   position:fixed;
   bottom: -80px;
   box-shadow:0 3px 5px rgb(0, 0, 0, 0.2);
-border-radius: 30px;
+border-radius: 10px;
 transition: 0.2s ease all;
   transform:${({copy})=>copy &&'translateY(-100px)'};
 }

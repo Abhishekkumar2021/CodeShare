@@ -46,7 +46,7 @@ const StyledDiv = styled.div`
       padding: 10px;
       box-shadow: 0 3px 5px rgb(0, 0, 0, 0.15);
     }
-    #input,
+    .input,
     textarea {
       margin-bottom: 20px;
       transition: 0.1s ease all;
@@ -132,7 +132,7 @@ function New() {
           <label htmlFor="title">Title of the post</label>
         </div>
         <input
-          id="input"
+          className="input"
           type="text"
           placeholder="Provide a title here...."
           name="title"
@@ -156,7 +156,7 @@ function New() {
           <label htmlFor="title">Author </label>
         </div>
         <input
-          id="input"
+          className="input"
           type="text"
           placeholder="Provide author name here...."
           name="author"
@@ -169,7 +169,7 @@ function New() {
           <label htmlFor="title">Tags </label>
         </div>
         <input
-          id="input"
+          className="input"
           type="text"
           placeholder="Provide comma seperated tags here ..."
           name="tags"
