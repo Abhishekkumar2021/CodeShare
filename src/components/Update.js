@@ -128,7 +128,7 @@ function Update() {
   useEffect(()=>{
 
     const fetchUserData = async ()=>{
-      const res = await axios.patch(`http://localhost:3001/api/posts/${id}`)
+      const res = await axios.patch(`https://codeshareback.herokuapp.com/api/posts/${id}`)
       const config = {
         headers:{
           "Content-Type":"application/json",
@@ -136,7 +136,7 @@ function Update() {
         }
       }
       try{
-        const res = await axios.get("http://localhost:3001/api/private",config);
+        const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
         setUser(res.data.user);
       }catch(e){
         localStorage.removeItem("authToken");

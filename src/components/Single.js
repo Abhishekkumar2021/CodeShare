@@ -179,7 +179,7 @@ function Single() {
         }
       }
       try{
-        const res = await axios.get("http://localhost:3001/api/private",config);
+        const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
         setUser(res.data.user);
 
       }catch(e){

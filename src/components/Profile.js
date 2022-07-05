@@ -190,7 +190,7 @@ function Profile() {
         }
       }
       try{
-        const res = await axios.get("http://localhost:3001/api/private",config);
+        const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
         setUser(res.data.user);
 
       }catch(e){
@@ -201,7 +201,7 @@ function Profile() {
         },5000)
       }
       const fetchPosts = async ()=>{
-        const res = await axios.get(`http://localhost:3001/api/posts/${user.email}`)
+        const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${user.email}`)
         setPosts(res.data);
       }
       fetchPosts();
@@ -214,7 +214,7 @@ function Profile() {
     const ans = prompt("This action is irreversible. Do you want to proceed? (Y/N)","Y");
     if(ans==="Y" || ans==="y"){
       try{
-          await axios.delete(`http://localhost:3001/api/posts/${id}/${user?.email}`);
+          await axios.delete(`https://codeshareback.herokuapp.com/api/posts/${id}/${user?.email}`);
       }catch(err){
         setError(err.response.data.error);
         setTimeout(()=>{

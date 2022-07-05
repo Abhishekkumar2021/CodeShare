@@ -120,7 +120,7 @@ function New() {
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('http://localhost:3001/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
+    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
     console.log(res.data);
     navigate(`/post/${res.data._id}`);
   }
@@ -133,7 +133,7 @@ function New() {
         }
       }
       try{
-        const res = await axios.get("http://localhost:3001/api/private",config);
+        const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
         console.log(res.data);
         setUser(res.data.user);
       }catch(e){

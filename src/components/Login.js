@@ -144,7 +144,7 @@ function Login() {
       }
     }
     try{
-      const res = await axios.post("http://localhost:3001/api/user/login",{email,password},config);
+      const res = await axios.post("https://codeshareback.herokuapp.com/api/user/login",{email,password},config);
         localStorage.setItem("authToken",res.data.token);
         navigate("/");
     }catch(err){
