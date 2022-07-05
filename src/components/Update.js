@@ -101,7 +101,7 @@ const StyledDiv = styled.div`
   }
 `;
 function Update() {
-  const [user,setUser] = useState({})
+
   const [des,setDes] = useContext(DescriptionContext);
   const {id} = useParams();
   document.title = "Update Post";
@@ -112,6 +112,7 @@ function Update() {
   const [code, setCode] = useState("");
   const [author, setAuthor] = useState("");
   const [tags, setTags] = useState("");
+  const [email,setEmail] = useState("");
 
   const handleTitle = (e)=>{
     setTitle(e.target.value);
@@ -127,39 +128,30 @@ function Update() {
   }
   useEffect(()=>{
 
-    const fetchUserData = async ()=>{
-      const res = await axios.patch(`https://codeshareback.herokuapp.com/api/posts/${id}`)
-      const config = {
-        headers:{
-          "Content-Type":"application/json",
-          Authorization:`Bearer ${localStorage.getItem("authToken")}`
-        }
-      }
-      try{
-        const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
-        setUser(res.data.user);
-      }catch(e){
-        localStorage.removeItem("authToken");
-        navigate("/login");
-      }
-      if(res.data.email!==user.email) navigate("/");
+    const fetchData = async ()=>{
+      const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
       setDes(res.data.description);  
       setAuthor(res.data.author);
       setTitle(res.data.title);
       setCode(res.data.code)
+      setEmail(res.data.email)
       let str = "";
       for(let i=0; i<res.data.tags.length-1; i++) str+=(res.data.tags[i]+",");
       str+=res.data.tags[res.data.tags.length-1];
       setTags(str);
+      
     }
-    fetchUserData();
-  },[id,setDes,navigate,user])
+    fetchData();
+    
+
+
+  },[id,setDes,email])
 
   //submitting form
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
+    const res = await axios.patch(`https://codeshareback.herokuapp.com/api/posts/${id}`,{title,description:des,code,author,tags:array,email})
     navigate(`/post/${res.data._id}`);
   }
   return (

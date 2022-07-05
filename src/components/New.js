@@ -141,7 +141,7 @@ function New() {
     }
     fetchUser();
     
-  },[navigate])
+  },[navigate,des])
   return (
     <StyledDiv>
       <Navbar />

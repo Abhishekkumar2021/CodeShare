@@ -164,7 +164,7 @@ function Single() {
   const navigate = useNavigate();
 
  
-  const [post,setPost] = useState({description:"<h1>Hii there :)</h1>"})
+  const [post,setPost] = useState({description:""})
   document.title = post?.title || 'Post'
   useEffect(()=>{
 

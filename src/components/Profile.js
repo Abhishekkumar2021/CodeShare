@@ -201,7 +201,7 @@ function Profile() {
         },5000)
       }
       const fetchPosts = async ()=>{
-        const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${user.email}`)
+        const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/mail/${user.email}`)
         setPosts(res.data);
       }
       fetchPosts();
