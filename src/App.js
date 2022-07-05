@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Login />} />
-          <Route  element={<PrivateRoute user={localStorage.getItem("authToken")} />}>
+          <Route  element={<PrivateRoute />}>
             <Route exact path="post/all" element={<All />} />
             <Route exact path="/profile" element={<Profile />} />
             <Route exact path="post/new" element={<New />} />

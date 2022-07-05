@@ -1,8 +1,8 @@
 import React from 'react'
 import { Navigate, Outlet } from 'react-router-dom';
 
-function PrivateRoute({ user,children} ) {
-    if (!user) {
+function PrivateRoute({ children} ) {
+    if (!localStorage.getItem("authToken")) {
       return <Navigate to="/login" replace />;
     }
   

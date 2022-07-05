@@ -10,6 +10,7 @@ import axios from 'axios'
 import Editor from "./Editor";
 import DescriptionContext from "../DescriptionContext";
 import { useNavigate } from "react-router-dom";
+import useToggle from "../hooks/useToggle";
 
 const StyledDiv = styled.div`
   width: 100%;
@@ -84,7 +85,15 @@ const StyledDiv = styled.div`
       gap: 10px;
       width: 150px;
       padding: 10px;
-      font-size: 36px;
+      font-size: 16px;
+      box-shadow: 0 3px 5px rgb(0, 0, 0, 0.15);
+      border-radius: 30px;
+      transition:0.3s ease all;
+      margin: 0 auto;
+      .icon{
+        width:30px;
+        height:30px;
+      }
       box-shadow: 0 3px 5px rgb(0, 0, 0, 0.15);
       border-radius: 30px;
       transition:0.3s ease all;
@@ -103,9 +112,106 @@ const StyledDiv = styled.div`
       }
     }
   }
+  .loading{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:white;
+    .lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: orange;
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+  }
 `;
 function New() {
   const [email,setEmail] = useState("")
+  const [process,toggleProcess] = useToggle(false);
   document.title = "Create Post";
   const navigate = useNavigate();
 
@@ -120,7 +226,9 @@ function New() {
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
+    toggleProcess()
     const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email})
+    toggleProcess()
     navigate(`/post/${res.data._id}`);
   }
   useEffect(()=>{
@@ -145,7 +253,7 @@ function New() {
   return (
     <StyledDiv>
       <Navbar />
-      <form onSubmit={handleSubmit}>
+      <form >
         <div className="title label">
           <MdOutlineDriveFileRenameOutline className="icons" />
           <label htmlFor="title">Title of the post</label>
@@ -197,10 +305,11 @@ function New() {
           required
         />
         <div className="post">
-          <AiOutlineCloudUpload />
-          <button>Post</button>
+        <AiOutlineCloudUpload className="icon"/>
+          <button onClick={handleSubmit}>Post</button>
         </div>
       </form>
+      {process && <div className="loading"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>}
     </StyledDiv>
   );
 }
