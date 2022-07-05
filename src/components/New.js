@@ -105,7 +105,7 @@ const StyledDiv = styled.div`
   }
 `;
 function New() {
-  const [user,setUser] = useState({})
+  const [email,setEmail] = useState("")
   document.title = "Create Post";
   const navigate = useNavigate();
 
@@ -120,7 +120,7 @@ function New() {
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
+    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email})
     navigate(`/post/${res.data._id}`);
   }
   useEffect(()=>{
@@ -133,7 +133,7 @@ function New() {
       }
       try{
         const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
-        setUser(res.data.user);
+        setEmail(res.data.user.email||"");
       }catch(e){
         localStorage.removeItem("authToken");
         navigate("/login");
