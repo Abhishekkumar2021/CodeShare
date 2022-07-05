@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdDescription, MdOutlineDriveFileRenameOutline } from "react-icons/md";
 import { FaFreeCodeCamp } from "react-icons/fa";
@@ -105,6 +105,7 @@ const StyledDiv = styled.div`
   }
 `;
 function New() {
+  const [user,setUser] = useState({})
   document.title = "Create Post";
   const navigate = useNavigate();
 
@@ -119,10 +120,30 @@ function New() {
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array})
-    // console.log(res.data);
+    const res = await axios.post('http://localhost:3001/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
+    console.log(res.data);
     navigate(`/post/${res.data._id}`);
   }
+  useEffect(()=>{
+    const fetchUser = async ()=>{
+      const config = {
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${localStorage.getItem("authToken")}`
+        }
+      }
+      try{
+        const res = await axios.get("http://localhost:3001/api/private",config);
+        console.log(res.data);
+        setUser(res.data.user);
+      }catch(e){
+        localStorage.removeItem("authToken");
+        navigate("/login");
+      }
+    }
+    fetchUser();
+    
+  },[navigate])
   return (
     <StyledDiv>
       <Navbar />

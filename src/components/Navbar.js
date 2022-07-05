@@ -4,6 +4,7 @@ import{AiFillHome,AiFillPlusCircle, AiOutlineMenu,AiOutlineClose} from 'react-ic
 import styled from 'styled-components'
 import {FaLaptopCode, FaLayerGroup} from 'react-icons/fa'
 import useToggle from '../hooks/useToggle'
+import {CgProfile} from 'react-icons/cg'
 
 
 const StyledNav = styled.nav`
@@ -121,6 +122,8 @@ function Navbar() {
         <Link to='/post/new'><AiFillPlusCircle className='icon'/> Create Post</Link>
         <Link to='/post/all'><FaLayerGroup className='icon'/> All Posts</Link>
         <Link to='/editor'><FaLaptopCode className='icon'/> Editor</Link>
+        <Link to='/profile'><CgProfile className='icon'/> Profile</Link>
+
         </div>
         <button onClick={handleClick}>{login?"Logout":"Login / Register"}</button>
         

@@ -11,8 +11,9 @@ background:rgb(217, 241, 250);
 `;
 
 function EditorPage() {
+  document.title="Editor"
   return (
-    <StyledDiv><Navbar/><Editor/></StyledDiv>
+    <StyledDiv><Navbar/><Editor /></StyledDiv>
   )
 }
 

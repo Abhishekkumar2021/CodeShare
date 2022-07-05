@@ -101,6 +101,7 @@ const StyledDiv = styled.div`
   }
 `;
 function Update() {
+  const [user,setUser] = useState({})
   const [des,setDes] = useContext(DescriptionContext);
   const {id} = useParams();
   document.title = "Update Post";
@@ -125,8 +126,23 @@ function Update() {
     setTags(e.target.value);
   }
   useEffect(()=>{
-    const fetchData = async ()=>{
-      const res = await axios.patch(`https://codeshareback.herokuapp.com/api/posts/${id}`)
+
+    const fetchUserData = async ()=>{
+      const res = await axios.patch(`http://localhost:3001/api/posts/${id}`)
+      const config = {
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${localStorage.getItem("authToken")}`
+        }
+      }
+      try{
+        const res = await axios.get("http://localhost:3001/api/private",config);
+        setUser(res.data.user);
+      }catch(e){
+        localStorage.removeItem("authToken");
+        navigate("/login");
+      }
+      if(res.data.email!==user.email) navigate("/");
       setDes(res.data.description);  
       setAuthor(res.data.author);
       setTitle(res.data.title);
@@ -136,15 +152,14 @@ function Update() {
       str+=res.data.tags[res.data.tags.length-1];
       setTags(str);
     }
-    fetchData();
-  },[id,setDes])
+    fetchUserData();
+  },[id,setDes,navigate,user])
 
   //submitting form
   const handleSubmit =async (e)=>{
     e.preventDefault();
     const array = tags.split(',');
-    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array})
-    // console.log(res.data);
+    const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
     navigate(`/post/${res.data._id}`);
   }
   return (
@@ -167,7 +182,7 @@ function Update() {
           <MdDescription className="icons" />
           <label htmlFor="description">Describe the post</label>
         </div>
-        <Editor/>
+        <Editor value={des}/>
       
         <div className="code label">
           <FaFreeCodeCamp className="icons" />
@@ -186,7 +201,6 @@ function Update() {
           name="author"
           value={author}
           onChange={handleAuthor}
-
         />
         <div className="author label">
           <AiFillTags className="icons" />

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, {  useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 import Navbar from './Navbar';
 import parse from 'html-react-parser'
@@ -9,6 +9,7 @@ import { atomOneDark,vs} from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import {MdDarkMode, MdOutlineContentCopy, MdOutlineDarkMode} from 'react-icons/md'
 import useToggle from '../hooks/useToggle';
 import { BsFillPeopleFill, BsFillTagsFill } from 'react-icons/bs';
+import { FaEdit } from 'react-icons/fa';
 const StyledPage = styled.div`
 width:100%;
 min-height:100vh;
@@ -21,6 +22,7 @@ flex-direction: column;
 gap:10px;
 align-items: center;
 .Paper{
+  position: relative;
   background:white;
   flex-grow: 1;
   padding:20px;
@@ -28,6 +30,22 @@ align-items: center;
   box-shadow: 0 3px 5px rgb(0, 0, 0, 0.15);
   width:900px;
   max-width: 100%;
+  .edit{
+    position: absolute;
+    top:10px;
+    right:10px;
+    .icon{
+      width:20px;
+      height:20px;
+      transition:0.2s ease all;
+      &:hover{
+          transform: scale(1.1);
+        }
+      &:active{
+          transform: scale(0.9);
+      }
+    }
+  }
   #title{
     font-weight:400;
   }
@@ -139,10 +157,12 @@ transition: 0.2s ease all;
 `
 
 function Single() {
-
+  const [user,setUser] = useState({})
   const [light, toggleLight] = useToggle(true);
   const {id} = useParams();
   const [copy,setCopy] = useState(false);
+  const navigate = useNavigate();
+
  
   const [post,setPost] = useState({description:''})
   document.title = post?.title || 'Post'
@@ -151,8 +171,26 @@ function Single() {
       const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
       setPost(res.data);
     }
+    const fetchUser = async()=>{
+      const config = {
+        headers:{
+          "Content-Type":"application/json",
+          Authorization:`Bearer ${localStorage.getItem("authToken")}`
+        }
+      }
+      try{
+        const res = await axios.get("http://localhost:3001/api/private",config);
+        setUser(res.data.user);
+
+      }catch(e){
+        localStorage.removeItem("authToken");
+          navigate("/login");
+      }
+
+    }
+    fetchUser()
     fetchData();
-  },[id])
+  },[id,navigate])
   const handleCopy= ()=>{
     navigator.clipboard.writeText(post.code);
     setCopy(true);
@@ -164,6 +202,7 @@ function Single() {
     <StyledPage copy={copy}>
       <Navbar/>
       <div className='Paper'>
+     {user.email===post.email && <div className='edit'><Link to={`/post/update/${post._id}`}><FaEdit className='icon'/></Link></div>}
       <h1 id="title">{post.title} </h1>
       <div id="des">{parse(post?.description)}</div>
       <div className='code'>

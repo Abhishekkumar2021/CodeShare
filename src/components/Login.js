@@ -144,20 +144,14 @@ function Login() {
       }
     }
     try{
-      const res = await axios.post("https://codeshareback.herokuapp.com/api/user/login",{email,password},config);
-      if(!res.data.success) setError(res.data.error)
-      else{
+      const res = await axios.post("http://localhost:3001/api/user/login",{email,password},config);
         localStorage.setItem("authToken",res.data.token);
         navigate("/");
-      } 
-
     }catch(err){
       setError(err.response.data.error);
       setTimeout(()=>{
         setError("");
       },5000)
-      // console.log(err.response.data.error);
-
     }
 
   }

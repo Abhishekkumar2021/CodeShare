@@ -39,6 +39,8 @@ const StyledDiv = styled.div`
 `;
 
 function Home() {
+  document.title="Code Share | Home"
+
   return (
     <StyledDiv>
       <Navbar/>

@@ -136,9 +136,9 @@ const StyledEditor = styled.div`
     }
 `;
 
-function Editor() {
+function Editor({value}) {
 const [des,setDes] = useContext(DescriptionContext);
-  const [string, setString] = useState("");
+  const [string, setString] = useState(value || "");
   const [HTML, setHTML] = useState("");
   const [href,handleHref] = useInput('');
   const [text,handleText] = useInput('');
