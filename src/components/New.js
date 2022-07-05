@@ -121,7 +121,6 @@ function New() {
     e.preventDefault();
     const array = tags.split(',');
     const res = await axios.post('https://codeshareback.herokuapp.com/api/posts/',{title,description:des,code,author,tags:array,email:user.email})
-    console.log(res.data);
     navigate(`/post/${res.data._id}`);
   }
   useEffect(()=>{
@@ -134,7 +133,6 @@ function New() {
       }
       try{
         const res = await axios.get("https://codeshareback.herokuapp.com/api/private",config);
-        console.log(res.data);
         setUser(res.data.user);
       }catch(e){
         localStorage.removeItem("authToken");

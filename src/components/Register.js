@@ -160,7 +160,6 @@ function Register() {
 
     }catch(err){
       setError(err.response.data.error);
-      // console.log(err.response.data.error);
     }
   }
   return (
