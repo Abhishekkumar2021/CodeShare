@@ -164,7 +164,7 @@ function Single() {
   const navigate = useNavigate();
 
  
-  const [post,setPost] = useState({description:''})
+  const [post,setPost] = useState({description:""})
   document.title = post?.title || 'Post'
   useEffect(()=>{
     const fetchData = async ()=>{
@@ -204,7 +204,7 @@ function Single() {
       <div className='Paper'>
      {user.email===post.email && <div className='edit'><Link to={`/post/update/${post._id}`}><FaEdit className='icon'/></Link></div>}
       <h1 id="title">{post.title} </h1>
-      <div id="des">{parse(post?.description)}</div>
+      <div id="des">{parse(post.description)}</div>
       <div className='code'>
         <div className="buttons">
         <MdOutlineContentCopy className='icon'  onClick={handleCopy}/>
