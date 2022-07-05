@@ -164,13 +164,10 @@ function Single() {
   const navigate = useNavigate();
 
  
-  const [post,setPost] = useState({description:""})
+  const [post,setPost] = useState({description:"<h1>Hii there :)</h1>"})
   document.title = post?.title || 'Post'
   useEffect(()=>{
-    const fetchData = async ()=>{
-      const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
-      setPost(res.data);
-    }
+
     const fetchUser = async()=>{
       const config = {
         headers:{
@@ -187,6 +184,10 @@ function Single() {
           navigate("/login");
       }
 
+    }
+    const fetchData = async ()=>{
+      const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
+      setPost(res.data);
     }
     fetchUser()
     fetchData();
