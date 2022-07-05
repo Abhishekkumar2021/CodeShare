@@ -81,12 +81,7 @@ const StyledEditor = styled.div`
       border-radius: 20px;
       transition: 0.3s ease all;
       background: white;
-      pre{
-    white-space: pre-wrap;
-    white-space: -moz-pre-wrap;
-    white-space: -o-pre-wrap;
-    word-wrap: break-word;
-    }
+    
       &:hover {
         transform: scale(1.1);
       }
@@ -102,6 +97,12 @@ const StyledEditor = styled.div`
       box-shadow: 0 3px 5px 2px rgb(0, 0, 0, 0.15);
       transform-origin: bottom left;
       position: relative;
+      pre{
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+    }
       span {
         background: rgb(20,20,60);
         position: absolute;
