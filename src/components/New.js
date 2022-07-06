@@ -253,7 +253,7 @@ function New() {
   return (
     <StyledDiv>
       <Navbar />
-      <form >
+      <form onSubmit={handleSubmit} >
         <div className="title label">
           <MdOutlineDriveFileRenameOutline className="icons" />
           <label htmlFor="title">Title of the post</label>
@@ -306,7 +306,7 @@ function New() {
         />
         <div className="post">
         <AiOutlineCloudUpload className="icon"/>
-          <button onClick={handleSubmit}>Post</button>
+          <button type="submit">Post</button>
         </div>
       </form>
       {process && <div className="loading"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>}

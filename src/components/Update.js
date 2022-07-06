@@ -314,7 +314,7 @@ function Update() {
         />
         <div className="post">
           <AiOutlineCloudUpload className="icon"/>
-          <button onClick={handleSubmit}>Update</button>
+          <button type="submit">Update</button>
         </div>
       </form>
       {process && <div className="loading"><div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div></div>}
