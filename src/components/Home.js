@@ -13,7 +13,7 @@ const StyledDiv = styled.div`
   width: 100%;
   min-height: 100vh;
   position: relative;
-  padding:20px;
+  padding: 80px 20px;
   display: flex;
   justify-content: center;
   align-items: center;
