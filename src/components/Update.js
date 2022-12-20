@@ -232,7 +232,7 @@ function Update() {
   useEffect(()=>{
 
     const fetchData = async ()=>{
-      const res = await axios.get(`https://codeshareback.herokuapp.com/api/posts/${id}`)
+      const res = await axios.get(`https://delightful-sneakers-fly.cyclic.app/api/posts/${id}`)
       setDes(res.data.description);  
       setAuthor(res.data.author);
       setTitle(res.data.title);
@@ -255,7 +255,7 @@ function Update() {
     e.preventDefault();
     const array = tags.split(',');
     toggleProcess()
-    const res = await axios.patch(`https://codeshareback.herokuapp.com/api/posts/${id}`,{title,description:des,code,author,tags:array,email})
+    const res = await axios.patch(`https://delightful-sneakers-fly.cyclic.app/api/posts/${id}`,{title,description:des,code,author,tags:array,email})
     toggleProcess()
     navigate(`/post/${res.data._id}`);
   }
