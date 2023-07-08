@@ -80,7 +80,7 @@ function All() {
   const [posts,setPosts] = useState([]);
   useEffect(()=>{
     const fetchPosts = async ()=>{
-      const res = await axios.get(`https://delightful-sneakers-fly.cyclic.app/api/posts/`)
+      const res = await axios.get(`https://prussian-blue-caiman-wear.cyclic.app/api/posts/`)
       setPosts(res.data);
     }
     fetchPosts();

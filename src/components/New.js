@@ -227,7 +227,7 @@ function New() {
     e.preventDefault();
     const array = tags.split(',');
     toggleProcess()
-    const res = await axios.post('https://delightful-sneakers-fly.cyclic.app/api/posts/',{title,description:des,code,author,tags:array,email})
+    const res = await axios.post('https://prussian-blue-caiman-wear.cyclic.app/api/posts/',{title,description:des,code,author,tags:array,email})
     toggleProcess()
     navigate(`/post/${res.data._id}`);
   }
@@ -240,7 +240,7 @@ function New() {
         }
       }
       try{
-        const res = await axios.get("https://delightful-sneakers-fly.cyclic.app/api/private",config);
+        const res = await axios.get("https://prussian-blue-caiman-wear.cyclic.app/api/private",config);
         setEmail(res.data.user.email||"");
       }catch(e){
         localStorage.removeItem("authToken");

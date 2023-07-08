@@ -191,7 +191,7 @@ function Profile() {
         }
       }
       try{
-        const res = await axios.get("https://delightful-sneakers-fly.cyclic.app/api/private",config);
+        const res = await axios.get("https://prussian-blue-caiman-wear.cyclic.app/api/private",config);
         setUser(res.data.user);
 
       }catch(e){
@@ -202,7 +202,7 @@ function Profile() {
         },5000)
       }
       const fetchPosts = async ()=>{
-        const res = await axios.get(`https://delightful-sneakers-fly.cyclic.app/api/posts/mail/${user.email}`)
+        const res = await axios.get(`https://prussian-blue-caiman-wear.cyclic.app/api/posts/mail/${user.email}`)
         setPosts(res.data);
       }
       fetchPosts();
@@ -215,7 +215,7 @@ function Profile() {
     const ans = prompt("This action is irreversible. Do you want to proceed? (Y/N)","Y");
     if(ans==="Y" || ans==="y"){
       try{
-          await axios.delete(`https://delightful-sneakers-fly.cyclic.app/api/posts/${id}/${user?.email}`);
+          await axios.delete(`https://prussian-blue-caiman-wear.cyclic.app/api/posts/${id}/${user?.email}`);
       }catch(err){
         setError(err.response.data.error);
         setTimeout(()=>{
