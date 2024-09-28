@@ -78,14 +78,17 @@ gap:15px;
 function All() {
   document.title = 'All Posts'
   const [posts,setPosts] = useState([]);
+
   useEffect(()=>{
     const fetchPosts = async ()=>{
-      const res = await axios.get(`https://prussian-blue-caiman-wear.cyclic.app/api/posts/`)
+      const res = await axios.get(`http://localhost:8080/api/posts/`)
       setPosts(res.data);
     }
     fetchPosts();
 
   },[])
+
+  // UI part
   return (
     <StyledDiv>
       <Navbar/>

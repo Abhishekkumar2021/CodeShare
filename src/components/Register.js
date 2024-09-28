@@ -151,7 +151,7 @@ function Register() {
       }
     }
     try{
-      const res = await axios.post("https://prussian-blue-caiman-wear.cyclic.app/api/user/register",{username,email,password},config);
+      const res = await axios.post("http://localhost:8080/api/user/register",{username,email,password},config);
       if(!res.data.success) setError(res.data.error)
       else{
         localStorage.setItem("authToken",res.data.token);

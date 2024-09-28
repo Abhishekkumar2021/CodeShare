@@ -176,7 +176,7 @@ function Single() {
         }
       }
       try{
-        const res = await axios.get("https://prussian-blue-caiman-wear.cyclic.app/api/private",config);
+        const res = await axios.get("http://localhost:8080/api/private",config);
         setUser(res.data.user);
 
       }catch(e){
@@ -186,7 +186,7 @@ function Single() {
 
     }
     const fetchData = async ()=>{
-      const res = await axios.get(`https://prussian-blue-caiman-wear.cyclic.app/api/posts/${id}`)
+      const res = await axios.get(`http://localhost:8080/api/posts/${id}`)
       setPost(res.data);
     }
     fetchUser()

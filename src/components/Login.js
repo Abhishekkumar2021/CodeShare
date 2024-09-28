@@ -144,7 +144,7 @@ function Login() {
       }
     }
     try{
-      const res = await axios.post("https://prussian-blue-caiman-wear.cyclic.app/api/user/login",{email,password},config);
+      const res = await axios.post("http://localhost:8080/api/user/login",{email,password},config);
         localStorage.setItem("authToken",res.data.token);
         navigate("/");
     }catch(err){
